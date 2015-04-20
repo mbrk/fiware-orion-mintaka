@@ -3,7 +3,7 @@ fiware-orion-mintaka
 
 A node.js client to interact with https://github.com/telefonicaid/fiware-orion
 
-This module is WORK IN PROGRESS. So it is NOT SUITED FOR PRODUCTION!
+This module is WORK IN PROGRESS. NOT SUITED FOR PRODUCTION!
 
 ## Installation 
    
