@@ -1,11 +1,9 @@
 var rest = require('restler');
 var promise = require('promise');
-var config = require('./config.js');
+var config = null;
 
 // default options for restler
 var options = {
-	username: config.ORION.user,
-	password: config.ORION.pass,
 	rejectUnauthorized: false,
 	headers: {
 		'Content-Type': 'application/json',
@@ -14,12 +12,6 @@ var options = {
 	}
 };
 
-// create url to use in calls
-if(config.ORION.user && config.ORION.pass){
-	var brokerUrl = config.ORION.protocol + '://' + config.ORION.user + ':' + config.ORION.pass + '@' + config.ORION.url;
-}else{
-	var brokerUrl = config.ORION.protocol + '://' + config.ORION.url;
-}
 
 
 module.exports = {
@@ -30,6 +22,20 @@ module.exports = {
 	 */
 	setOptions: function(opt){
 		options = opt;
+	},
+
+	/**
+	 * set configuration in the format shown in ./conf.sample.js
+	 * @param cnf
+	 */
+	configure: function(cnf){
+		config = cnf;
+		// create url to use in calls
+		if(config.ORION.user && config.ORION.pass){
+			brokerUrl = config.ORION.protocol + '://' + config.ORION.user + ':' + config.ORION.pass + '@' + config.ORION.url;
+		}else{
+			brokerUrl = config.ORION.protocol + '://' + config.ORION.url;
+		}
 	},
 
 	/**
@@ -72,7 +78,7 @@ module.exports = {
 	 * @param json
 	 * @returns {*}
 	 */
-	registerEntityt: function(entity, json){
+	registerEntity: function(entity, json){
 		var url = brokerUrl + 'contextEntities/' + entity;
 		console.log('registercontext', url);
 		return new promise(function(resolve, reject){
