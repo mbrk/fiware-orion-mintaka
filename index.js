@@ -31,10 +31,10 @@ module.exports = {
 	configure: function(cnf){
 		config = cnf;
 		// create url to use in calls
-		if(config.ORION.user && config.ORION.pass){
-			brokerUrl = config.ORION.protocol + '://' + config.ORION.user + ':' + config.ORION.pass + '@' + config.ORION.url;
+		if(config.user && config.pass){
+			brokerUrl = config.protocol + '://' + config.user + ':' + config.pass + '@' + config.url;
 		}else{
-			brokerUrl = config.ORION.protocol + '://' + config.ORION.url;
+			brokerUrl = config.protocol + '://' + config.url;
 		}
 	},
 
