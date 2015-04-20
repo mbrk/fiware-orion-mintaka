@@ -60,5 +60,7 @@ Available functions are
     
 ## Release History
 
+* 0.2.0 added more contextbroker api functions
+* 0.1.1 bug fixes
 * 0.1.0 Initial release
 
