@@ -53,6 +53,7 @@ Available functions are
     mintaka.requestEntities() // list all registered entities
     mintaka.registerEntity(entityName, attributeJSON) // create a new entity with given attributes
     mintaka.deleteEntity(entityName) // delete given entity
+    ... for more read the code
     
 ## Tests
 
