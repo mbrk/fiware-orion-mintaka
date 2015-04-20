@@ -7,7 +7,7 @@ This module is WORK IN PROGRESS. NOT SUITED FOR PRODUCTION!
 
 ## Installation 
    
-   npm install fiware-orion-mintaka
+    npm install fiware-orion-mintaka
    
 ## Usage
 
