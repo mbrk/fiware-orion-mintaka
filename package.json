@@ -1,0 +1,39 @@
+{
+  "name": "fiware-orion-mintaka",
+  "version": "0.1.0",
+  "description": "A node.js module to interact with https://github.com/telefonicaid/fiware-orion",
+  "main": "index.js",
+  "scripts": {
+    "test": "tbd"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mbrk/fiware-orion-mintaka.git"
+  },
+  "keywords": [
+    "fiware",
+    "orion",
+    "context",
+    "broker",
+    "node"
+  ],
+  "author": "Malte Burkhardt <info@bitsundpixel.de> (http://www.bitsundpixel.de)",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/mbrk/fiware-orion-mintaka/blob/master/LICENSE"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/mbrk/fiware-orion-mintaka/issues"
+  },
+  "homepage": "https://github.com/mbrk/fiware-orion-mintaka",
+  "dependencies": {
+    "promise": "^7.0.0",
+    "restler": "^3.2.2"
+  },
+  "devDependencies": {
+    "chai": "^2.2.0",
+    "mocha": "^2.2.4"
+  }
+}
