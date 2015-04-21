@@ -11,7 +11,7 @@ This module is WORK IN PROGRESS. NOT SUITED FOR PRODUCTION!
    
 ## Usage
 
-After installation first you must configure fiware-orion-mintaka
+After installation first you have to configure fiware-orion-mintaka
     
     var mintaka = require('fiware-orion-mintaka');
     
@@ -51,8 +51,6 @@ Now you can use fiware-orion-mintaka. All function calls return a promise which 
 Available functions are
 
     mintaka.requestEntities() // list all registered entities
-    mintaka.registerEntity(entityName, attributeJSON) // create a new entity with given attributes
-    mintaka.deleteEntity(entityName) // delete given entity
     ... for more read the code
     
 ## Tests
