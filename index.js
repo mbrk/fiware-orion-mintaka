@@ -123,7 +123,6 @@ module.exports = {
 						reject(data);
 					});
 		});
-
 	},
 
 	/**
