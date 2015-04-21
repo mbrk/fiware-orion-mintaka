@@ -11,6 +11,7 @@
 
 var rest = require('restler');
 var promise = require('promise');
+var util = require('util');
 var config = null;
 
 // default options for restler
@@ -49,6 +50,8 @@ module.exports = {
 		}
 	},
 
+	/********** LIST ALL ***********/
+
 	/**
 	 * request all registered entities
 	 * @returns {*}
@@ -57,6 +60,8 @@ module.exports = {
 		var url = brokerUrl + 'contextEntities';
 		return this.createPromiseForGET(url, options);
 	},
+
+	/********** ENTITIES ***********/
 
 	/**
 	 * register a new entity - pass in the attribute json
@@ -102,24 +107,6 @@ module.exports = {
 	},
 
 	/**
-	 * set attribute on entity
-	 *
-	 * @param entity
-	 * @param attribute
-	 * @param value
-	 * @returns {*}
-	 */
-	registerAttribute: function(entity, attribute, value){
-		var url = brokerUrl + 'contextEntities/' + entity + '/attributes/' + attribute;
-		var json = {
-			"value" : "" + value
-		};
-		return this.createPromiseForJsonPOST(url, json, options);
-	},
-
-
-
-	/**
 	 * delete a registered entity
 	 * @param entity
 	 * @returns {*}
@@ -138,6 +125,36 @@ module.exports = {
 		});
 
 	},
+
+	/**
+	 * get all entities from specified type
+	 *
+	 * @param type
+	 * @returns {*}
+	 */
+	queryEntitiesByType: function(type){
+		var url = brokerUrl + 'contextEntityTypes/' + type;
+		return this.createPromiseForGET(url, options);
+	},
+
+	/********** ATTRIBUTES ***********/
+
+	/**
+	 * set attribute on entity
+	 *
+	 * @param entity
+	 * @param attribute
+	 * @param value
+	 * @returns {*}
+	 */
+	registerAttribute: function(entity, attribute, value){
+		var url = brokerUrl + 'contextEntities/' + entity + '/attributes/' + attribute;
+		var json = {
+			"value" : "" + value
+		};
+		return this.createPromiseForJsonPOST(url, json, options);
+	},
+
 
 	/**
 	 * get all attributes from specified entity
@@ -162,17 +179,6 @@ module.exports = {
 	},
 
 	/**
-	 * get all entities from specified type
-	 *
-	 * @param type
-	 * @returns {*}
-	 */
-	queryEntitiesByType: function(type){
-		var url = brokerUrl + 'contextEntityTypes/' + type;
-		return this.createPromiseForGET(url, options);
-	},
-
-	/**
 	 * get a specified attribute from all entities with specified type
 	 * @param type
 	 * @param attribute
@@ -182,6 +188,36 @@ module.exports = {
 		var url = brokerUrl + 'contextEntityTypes/' + type + '/attributes/' + attribute;
 		return this.createPromiseForGET(url, options);
 	},
+
+	/**
+	 * update a bunch of attributes for given entity - pass in attributes as json
+	 * @param entity
+	 * @param json
+	 * @returns {*}
+	 */
+	updateAttributes: function(entity, json){
+		var url = brokerUrl + 'contextEntities/' + entity + '/attributes';
+		jsonLog(json);
+		return this.createPromiseForJsonPUT(url, json, options);
+	},
+
+	/**
+	 * update a single attribute with a value
+	 * @param entity
+	 * @param attribute
+	 * @param value
+	 * @returns {*}
+	 */
+	updateSingleAttribute: function(entity, attribute, value){
+		var url = brokerUrl + 'contextEntities/' + entity + '/attributes/' + attribute;
+		var json = {
+			"value" : "" + value
+		};
+		return this.createPromiseForJsonPUT(url, json, options);
+	},
+
+
+	/********** HELPER ***********/
 
 	/**
 	 * helper to create promises for 'restler' GET calls
@@ -218,5 +254,23 @@ module.exports = {
 						reject(data);
 					});
 		});
+	},
+
+	createPromiseForJsonPUT: function(url, json, options){
+		return new promise(function(resolve, reject){
+			rest.putJson(url, json, options)
+					.on('success', function(data, response) {
+						resolve(data);
+					})
+					.on('fail', function(data, response) {
+						reject(data);
+					});
+		});
 	}
+
+
 };
+
+function jsonLog(json) {
+	console.log(util.inspect(json, false, null));
+}
