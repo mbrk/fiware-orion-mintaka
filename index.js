@@ -1,3 +1,14 @@
+/**
+ * TODO
+ * - interface for updating context
+ * - interface for subscribing context
+ * - interface for registering entities without attributes
+ * - interface for registering attributes with types
+ * - add proper logging
+ * - helper for converting attributes/entity js-object to correct context broker json
+ * - add verbose debug information
+ */
+
 var rest = require('restler');
 var promise = require('promise');
 var config = null;
@@ -72,7 +83,10 @@ module.exports = {
 	 */
 	registerEntity: function(entity, json){
 		var url = brokerUrl + 'contextEntities/' + entity;
-		return this.createPromiseForJsonPOST(url, json, options);
+		if(typeof json != 'undefined'){
+			return this.createPromiseForJsonPOST(url, json, options);
+		}
+
 	},
 
 	/**
