@@ -1,6 +1,6 @@
 {
   "name": "fiware-orion-mintaka",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A node.js module to interact with https://github.com/telefonicaid/fiware-orion",
   "main": "index.js",
   "scripts": {
