@@ -50,8 +50,7 @@ Now you can use fiware-orion-mintaka. All function calls return a promise which 
     	
 Available functions are
 
-    mintaka.requestEntities() // list all registered entities
-    ... for more read the code
+    ... please read the code
     
 ## Tests
 
