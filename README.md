@@ -57,6 +57,10 @@ Available functions are
 
     // to be written
     
+## Contributions
+    
+Feel free to implement stuff you like/want/need and create pull requests on GitHub.
+    
 ## Release History
 
 * 0.2.0 added more contextbroker api functions
