@@ -63,6 +63,7 @@ Feel free to implement stuff you like/want/need and create pull requests on GitH
     
 ## Release History
 
+* 0.3.0 added some update context api functions, code restructured
 * 0.2.0 added more contextbroker api functions
 * 0.1.1 bug fixes
 * 0.1.0 Initial release
